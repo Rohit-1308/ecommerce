@@ -17,14 +17,19 @@ class _HomeAppBarState extends State<HomeAppBar> {
       padding: EdgeInsets.all(25),
       child: Row(
         children: [
-          Icon(Icons.sort,
-          size: 30,
-          color: Colors.deepPurple,),
-          Padding(padding: EdgeInsets.only(left: 50),
+          Icon(
+            Icons.sort,
+            size: 30,
+            color: Colors.deepPurple,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 50),
             child: Text(
               "DP SHOP",
               style: TextStyle(
-                fontSize: 23, fontWeight: FontWeight.bold,color: Color(0xFF4C53A5),
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF4C53A5),
               ),
             ),
           ),
@@ -32,13 +37,18 @@ class _HomeAppBarState extends State<HomeAppBar> {
           Badge(
             badgeColor: Colors.red,
             padding: EdgeInsets.all(7),
-            badgeContent: Text("3",
-            style: TextStyle(color: Colors.white),),
+            badgeContent: Text(
+              "3",
+              style: TextStyle(color: Colors.white),
+            ),
             child: InkWell(
-              onTap: (){
+              onTap: () {
                 //Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage(),));
               },
-              child: Icon(Icons.notifications,size: 30,),
+              child: Icon(
+                Icons.notifications,
+                size: 30,
+              ),
             ),
           ),
         ],

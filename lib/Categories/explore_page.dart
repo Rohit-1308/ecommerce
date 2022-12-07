@@ -107,9 +107,7 @@ class _ExplorePageState extends State<ExplorePage> {
               return Padding(
                 padding: const EdgeInsets.only(bottom: miniSpacer),
                 child: GestureDetector(
-                  onTap: () {
-
-                  },
+                  onTap: () {},
                   child: CunstomPlaceHolder(
                     title: data['title'],
                   ),

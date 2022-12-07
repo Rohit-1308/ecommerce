@@ -15,42 +15,42 @@ class _RegisterState extends State<Register> {
 
     return Scaffold(
         body: SafeArea(
-          child: Column(
-            children: [
-              _getHeader(),
-              SizedBox(
-                height: 16,
-              ),
-              getRegiterText(),
-              SizedBox(
-                height: 10,
-              ),
-              _userInput("Enter full Name", Icons.account_circle),
-              SizedBox(
-                height: 10,
-              ),
-              _userInput("Email Address", Icons.email),
-              SizedBox(
-                height: 10,
-              ),
-              _userInput("Enter Password", Icons.lock),
-              SizedBox(
-                height: 10,
-              ),
-              _termsBox(),
-              SizedBox(
-                height: 10,
-              ),
-              _regiterButton(),
-              Spacer(),
-              Divider(
-                height: 1,
-                color: Colors.black,
-              ),
-              _loginSection(),
-            ],
+      child: Column(
+        children: [
+          _getHeader(),
+          SizedBox(
+            height: 16,
           ),
-        ));
+          getRegiterText(),
+          SizedBox(
+            height: 10,
+          ),
+          _userInput("Enter full Name", Icons.account_circle),
+          SizedBox(
+            height: 10,
+          ),
+          _userInput("Email Address", Icons.email),
+          SizedBox(
+            height: 10,
+          ),
+          _userInput("Enter Password", Icons.lock),
+          SizedBox(
+            height: 10,
+          ),
+          _termsBox(),
+          SizedBox(
+            height: 10,
+          ),
+          _regiterButton(),
+          Spacer(),
+          Divider(
+            height: 1,
+            color: Colors.black,
+          ),
+          _loginSection(),
+        ],
+      ),
+    ));
   }
 
   Widget _getHeader() {
@@ -63,14 +63,14 @@ class _RegisterState extends State<Register> {
             height: 100,
             width: 100,
             decoration: BoxDecoration(
-              //borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                //borderRadius: BorderRadius.all(Radius.circular(10.0)),
                 shape: BoxShape.circle,
                 image: DecorationImage(
                     fit: BoxFit.fill,
                     image: NetworkImage(
                         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"))
-              // color: Colors.orange[100],
-            ),
+                // color: Colors.orange[100],
+                ),
           ),
         ),
       ],

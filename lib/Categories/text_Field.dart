@@ -55,36 +55,36 @@ class _CustomTextFieldState extends State<CustomTextField> {
             alignment: Alignment.center,
             child: Container(
                 child: SvgPicture.asset(
-                  assetImg + widget.prefixIcon,
-                  height: widget.iconHeight,
-                  color: widget.iconColor,
-                )),
+              assetImg + widget.prefixIcon,
+              height: widget.iconHeight,
+              color: widget.iconColor,
+            )),
           ),
           SizedBox(width: miniSpacer),
           Flexible(
               child: TextField(
-                onTap: () {},
-                keyboardType: widget.keyboardType,
-                readOnly: widget.readOnlyField,
-                obscureText: widget.isPassword,
-                controller: widget.controller,
-                maxLines: widget.maxLine,
-                style: TextStyle(
-                  fontSize: 15.0,
-                  color: secondary,
-                  fontWeight: FontWeight.w500,
-                ),
-                cursorColor: secondary,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  labelText: widget.labelText,
-                  labelStyle: TextStyle(
-                    color: secondary.withOpacity(0.5),
-                    fontSize: 15.0,
-                    height: 1,
-                  ),
-                ),
-              )),
+            onTap: () {},
+            keyboardType: widget.keyboardType,
+            readOnly: widget.readOnlyField,
+            obscureText: widget.isPassword,
+            controller: widget.controller,
+            maxLines: widget.maxLine,
+            style: TextStyle(
+              fontSize: 15.0,
+              color: secondary,
+              fontWeight: FontWeight.w500,
+            ),
+            cursorColor: secondary,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              labelText: widget.labelText,
+              labelStyle: TextStyle(
+                color: secondary.withOpacity(0.5),
+                fontSize: 15.0,
+                height: 1,
+              ),
+            ),
+          )),
         ],
       ),
     );

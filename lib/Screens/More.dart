@@ -1,7 +1,7 @@
 import 'package:settings_ui/settings_ui.dart';
 import 'package:flutter/material.dart';
-class MyHomePage extends StatefulWidget {
 
+class MyHomePage extends StatefulWidget {
   late final String title = '';
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -32,16 +32,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 leading: Icon(Icons.format_paint),
                 title: Text('Enable custom theme'),
               ),
-
             ],
           ),
-          SettingsSection(title: Text('Settings'),
+          SettingsSection(
+            title: Text('Settings'),
             tiles: [
               SettingsTile.navigation(
                 leading: Icon(Icons.key),
                 title: Text('Reset Password'),
                 value: Text(''),
-                onPressed: (BuildContext context){},
+                onPressed: (BuildContext context) {},
               ),
               SettingsTile.navigation(
                 leading: Icon(Icons.visibility),
@@ -58,8 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: Text('Sign Out'),
                 value: Text(''),
               ),
-
-            ],)
+            ],
+          )
         ],
       ),
     );

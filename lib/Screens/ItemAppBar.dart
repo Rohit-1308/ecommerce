@@ -25,13 +25,17 @@ class _ItemAppBarState extends State<ItemAppBar> {
               color: Color(0xFF4C53A5),
             ),
           ),
-          Padding(padding: EdgeInsets.only(left: 20),
-          child: Text("Product",style: TextStyle(
-            fontSize: 23, fontWeight: FontWeight.bold,
-            color: Color(0xFF4C53A5),
-          ),),
+          Padding(
+            padding: EdgeInsets.only(left: 20),
+            child: Text(
+              "Product",
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF4C53A5),
+              ),
+            ),
           ),
-
         ],
       ),
     );

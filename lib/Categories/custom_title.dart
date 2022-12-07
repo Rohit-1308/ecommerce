@@ -35,21 +35,21 @@ class CustomTitle extends StatelessWidget {
         ),
         (extend)
             ? GestureDetector(
-          onTap: () {
-            // Navigator.pushNamed(
-            //   context,
-            //   route,
-            //   arguments: arg,
-            // );
-          },
-          child: Text(
-            'See More',
-            style: TextStyle(
-                color: primary,
-                fontSize: 15.0,
-                fontWeight: FontWeight.w400),
-          ),
-        )
+                onTap: () {
+                  // Navigator.pushNamed(
+                  //   context,
+                  //   route,
+                  //   arguments: arg,
+                  // );
+                },
+                child: Text(
+                  'See More',
+                  style: TextStyle(
+                      color: primary,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w400),
+                ),
+              )
             : Container(),
       ],
     );

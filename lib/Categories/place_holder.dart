@@ -37,14 +37,14 @@ class _CunstomPlaceHolderState extends State<CunstomPlaceHolder> {
           ),
           (widget.isSwitch)
               ? CupertinoSwitch(
-            value: switchValue,
-            activeColor: primary,
-            onChanged: (bool newValue) {
-              setState(() {
-                switchValue = newValue;
-              });
-            },
-          )
+                  value: switchValue,
+                  activeColor: primary,
+                  onChanged: (bool newValue) {
+                    setState(() {
+                      switchValue = newValue;
+                    });
+                  },
+                )
               : SvgPicture.asset(assetImg + 'arrow_up_icon.svg'),
         ],
       ),

@@ -16,13 +16,13 @@ class _JobPostState extends State<JobPost> {
     "Saddas",
   ];
 
-
   /// initialization is here:
   @override
   void initState() {
     super.initState();
     _value1 = nameList1[0];
   }
+
   @override
   Widget build(BuildContext context) {
     bool? checkedValue = false;
@@ -35,33 +35,58 @@ class _JobPostState extends State<JobPost> {
         padding: const EdgeInsets.all(10.0),
         child: ListView(
           children: [
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 22),
-              child: Text('Post Product',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.amber),),
+              child: Text(
+                'Post Product',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.amber),
+              ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
-                decoration: InputDecoration(hintText: 'Product Title',hintStyle: TextStyle(color: Colors.black38),
-                    prefixIcon: Icon(Icons.person),enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black38))),
+                decoration: InputDecoration(
+                    hintText: 'Product Title',
+                    hintStyle: TextStyle(color: Colors.black38),
+                    prefixIcon: Icon(Icons.person),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black38))),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
-                decoration: InputDecoration(hintText: 'Quantity Avaliable',hintStyle: TextStyle(color: Colors.black38),
-                    prefixIcon: Icon(Icons.card_travel_rounded),enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black38))),
+                decoration: InputDecoration(
+                    hintText: 'Quantity Avaliable',
+                    hintStyle: TextStyle(color: Colors.black38),
+                    prefixIcon: Icon(Icons.card_travel_rounded),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black38))),
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 22),
               child: Row(
                 children: <Widget>[
-                  Text(' Select Company',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                  Text(
+                    ' Select Company',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
                   Center(
                     child: DropdownButton(
                       value: _value1,
@@ -71,7 +96,7 @@ class _JobPostState extends State<JobPost> {
                         });
                       },
                       items: nameList1.map(
-                            (item) {
+                        (item) {
                           return DropdownMenuItem(
                             value: item,
                             child: new Text(item),
@@ -83,23 +108,32 @@ class _JobPostState extends State<JobPost> {
                 ],
               ),
             ),
-            const SizedBox(height: 10,),
-            const  Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 20),
+            const SizedBox(
+              height: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
-                decoration: InputDecoration(hintText: 'Enter Product Details',hintStyle: TextStyle(color: Colors.black38),
-                    prefixIcon: Icon(Icons.edit),enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black38))),
+                decoration: InputDecoration(
+                    hintText: 'Enter Product Details',
+                    hintStyle: TextStyle(color: Colors.black38),
+                    prefixIcon: Icon(Icons.edit),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black38))),
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 22),
-              child: Text('Offers',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
+              child: Text(
+                'Offers',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              ),
             ),
             Column(
-              children: [
-
-              ],
+              children: [],
             ),
             Container(
               padding: EdgeInsets.all(10.0),
@@ -113,7 +147,8 @@ class _JobPostState extends State<JobPost> {
                         checkedValue = newValue;
                       });
                     },
-                    controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+                    controlAffinity: ListTileControlAffinity
+                        .leading, //  <-- leading Checkbox
                   ),
                   Container(
                     child: Column(
@@ -126,7 +161,8 @@ class _JobPostState extends State<JobPost> {
                               checkedValue1 = newValue;
                             });
                           },
-                          controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+                          controlAffinity: ListTileControlAffinity
+                              .leading, //  <-- leading Checkbox
                         )
                       ],
                     ),
@@ -142,7 +178,8 @@ class _JobPostState extends State<JobPost> {
                               checkedValue3 = newValue;
                             });
                           },
-                          controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+                          controlAffinity: ListTileControlAffinity
+                              .leading, //  <-- leading Checkbox
                         )
                       ],
                     ),

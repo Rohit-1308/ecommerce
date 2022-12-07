@@ -7,7 +7,6 @@ class Applications extends StatefulWidget {
 }
 
 class _ApplicationsState extends State<Applications> {
-
   List<Application> applications = getApplications();
 
   @override
@@ -17,32 +16,26 @@ class _ApplicationsState extends State<Applications> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-
           Padding(
             padding: EdgeInsets.only(right: 32, left: 32, top: 48, bottom: 15),
             child: Text(
               "Suggested For You",
               style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  height: 1.2
-              ),
+                  fontSize: 20, fontWeight: FontWeight.bold, height: 1.2),
             ),
           ),
-
           Padding(
             padding: EdgeInsets.only(right: 8, left: 10, bottom: 8),
             child: Column(
               children: buildApplications(),
             ),
           ),
-
         ],
       ),
     );
   }
 
-  List<Widget> buildApplications(){
+  List<Widget> buildApplications() {
     List<Widget> list = [];
     for (var i = 0; i < applications.length; i++) {
       list.add(buildApplication(applications[i]));
@@ -50,7 +43,7 @@ class _ApplicationsState extends State<Applications> {
     return list;
   }
 
-  Widget buildApplication(Application application){
+  Widget buildApplication(Application application) {
     return Container(
       padding: EdgeInsets.all(5),
       margin: EdgeInsets.symmetric(vertical: 2),
@@ -62,10 +55,8 @@ class _ApplicationsState extends State<Applications> {
       ),
       child: Column(
         children: [
-
           Row(
             children: [
-
               Container(
                 height: 60,
                 width: 60,
@@ -79,50 +70,40 @@ class _ApplicationsState extends State<Applications> {
                   ),
                 ),
               ),
-
               Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-
-                        Text(
-                          application.product,
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-
-                        Text(
-                          application.company,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          ),
-                        ),
-
-                      ],
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      application.product,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  )
-              ),
-
+                    Text(
+                      application.company,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              )),
               Icon(
                 Icons.more_vert,
               ),
-
             ],
           ),
-
           SizedBox(
             height: 16,
           ),
-
           Row(
             children: [
-
               Expanded(
                 child: Container(
                   height: 30,
@@ -138,14 +119,16 @@ class _ApplicationsState extends State<Applications> {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
-                        color: application.status == "In Stock" ? Colors.green[500] :
-                        application.status == "Out of Stock" ? Colors.red[500] : Colors.black,
+                        color: application.status == "In Stock"
+                            ? Colors.green[500]
+                            : application.status == "Out of Stock"
+                                ? Colors.red[500]
+                                : Colors.black,
                       ),
                     ),
                   ),
                 ),
               ),
-
               Expanded(
                 child: Container(
                   child: Center(
@@ -158,13 +141,10 @@ class _ApplicationsState extends State<Applications> {
                   ),
                 ),
               ),
-
             ],
           ),
-
         ],
       ),
     );
   }
-
 }

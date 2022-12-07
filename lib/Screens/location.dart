@@ -10,8 +10,6 @@ class locationScreen extends StatefulWidget {
 class _locationScreenState extends State<locationScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-    );
+    return Scaffold();
   }
 }

@@ -46,7 +46,7 @@ dependencies:
   lottie:
   vertical_stepper:
   flutter_svg:
-  # http: ^0.13.5
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
