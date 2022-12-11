@@ -1,12 +1,15 @@
 import 'package:clippy_flutter/arc.dart';
 import 'package:ecommerce/Screens/ItemAppBar.dart';
+import 'package:ecommerce/model/info_product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ItemPage extends StatefulWidget {
-  //const ItemPage({Key? key}) : super(key: key);
+
+
+   
 
   @override
   State<ItemPage> createState() => _ItemPageState();
@@ -23,6 +26,7 @@ class _ItemPageState extends State<ItemPage> {
 
   @override
   Widget build(BuildContext context) {
+    final itemInfo= ModalRoute.of(context)!.settings.arguments as InfoProduct;
     return Scaffold(
       backgroundColor: Color(0xFFEDECF2),
       body: ListView(
@@ -30,8 +34,8 @@ class _ItemPageState extends State<ItemPage> {
           ItemAppBar(),
           Padding(
             padding: EdgeInsets.all(16),
-            child: Image.asset(
-              "images/1.png",
+            child: Image.network(
+              itemInfo.variantImage!,
               height: 300,
             ),
           ),
@@ -54,7 +58,7 @@ class _ItemPageState extends State<ItemPage> {
                       child: Row(
                         children: [
                           Text(
-                            "Product Title",
+                            "${itemInfo.productTitle}",
                             style: TextStyle(
                               fontSize: 28,
                               color: Color(0xFF4C53A5),

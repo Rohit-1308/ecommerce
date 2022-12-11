@@ -1,16 +1,16 @@
 // import 'package:ecommerce/model/info_product/info_product.dart';
 import 'dart:convert';
 
-import 'package:ecommerce/model/product_info.dart';
+// import 'package:ecommerce/model/product_info.dart';
 import 'package:http/http.dart' as http;
 
-import 'info_product/info_product.dart';
+import 'info_product.dart';
 
 class RemoteService {
 
 
 
-  static Future<dynamic> getProductDetails() async {
+  static Future<List<InfoProduct>?> getProductDetails() async {
     var client = http.Client();
      List<InfoProduct> products=[];
     var url = Uri.parse("https://ewiz.gq/android/get_products");
@@ -34,7 +34,7 @@ class RemoteService {
     if (response.statusCode == 200) {
       return products;
     }else{
-      return "some error occurred";
+      return null;
     }
 
   }

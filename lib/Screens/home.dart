@@ -8,20 +8,23 @@ import 'HomeAppBar.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
+
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
         HomeAppBar(),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ItemPage(),
-                ));
-          },
-          child: Container(
+        // GestureDetector(
+        //   onTap: () {
+        //     Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //           builder: (context) => ItemPage(),
+        //         ));
+        //   },
+          // child: 
+          Container(
             //height: 500,
             padding: EdgeInsets.only(top: 15),
             decoration: BoxDecoration(
@@ -91,7 +94,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-        ),
+        // ),
       ],
     );
   }
