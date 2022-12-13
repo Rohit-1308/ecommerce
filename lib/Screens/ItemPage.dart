@@ -1,6 +1,6 @@
 import 'package:clippy_flutter/arc.dart';
 import 'package:ecommerce/Screens/ItemAppBar.dart';
-import 'package:ecommerce/model/info_product.dart';
+import 'package:ecommerce/datamodel/info_product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

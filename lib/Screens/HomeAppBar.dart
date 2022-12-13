@@ -1,5 +1,5 @@
+
 import 'package:badges/badges.dart';
-import 'package:ecommerce/Screens/Cart.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatefulWidget {
@@ -14,15 +14,15 @@ class _HomeAppBarState extends State<HomeAppBar> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.all(25),
+      padding: const EdgeInsets.all(25),
       child: Row(
         children: [
-          Icon(
+          const Icon(
             Icons.sort,
             size: 30,
             color: Colors.deepPurple,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 50),
             child: Text(
               "DP SHOP",
@@ -33,11 +33,11 @@ class _HomeAppBarState extends State<HomeAppBar> {
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Badge(
             badgeColor: Colors.red,
-            padding: EdgeInsets.all(7),
-            badgeContent: Text(
+            padding: const EdgeInsets.all(7),
+            badgeContent: const Text(
               "3",
               style: TextStyle(color: Colors.white),
             ),
@@ -45,7 +45,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
               onTap: () {
                 //Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage(),));
               },
-              child: Icon(
+              child: const Icon(
                 Icons.notifications,
                 size: 30,
               ),

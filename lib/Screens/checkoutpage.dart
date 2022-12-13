@@ -1,3 +1,4 @@
+import 'package:ecommerce/Screens/orderSummary.dart';
 import 'package:flutter/material.dart';
 
 class CheckOut extends StatefulWidget {
@@ -10,6 +11,6 @@ class CheckOut extends StatefulWidget {
 class _CheckOutState extends State<CheckOut> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return OrderSummary();
   }
 }

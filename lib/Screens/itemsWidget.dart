@@ -1,9 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:ecommerce/Screens/ItemPage.dart';
-import 'package:ecommerce/model/RemoteService.dart';
-import 'package:ecommerce/model/info_product.dart';
+import 'package:ecommerce/API/RemoteService.dart';
+import 'package:ecommerce/datamodel/info_product.dart';
+import 'package:ecommerce/utils/apiUtils.dart';
+import 'package:ecommerce/utils/appUtils.dart';
 import 'package:flutter/material.dart';
+
+import '../Static/tempCart.dart';
 
 class ItemsWidget extends StatefulWidget {
   const ItemsWidget({Key? key}) : super(key: key);
@@ -28,38 +32,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
     if (products != null) {
       print(products![0].size);
     }
-    print("length of products is ${products!.length}");
     setState(() {});
-  }
-
-  getImageUrl(int i) {
-    if (products![i].variantImage != null) {
-      return Image.network(products![i].variantImage!,
-          height: MediaQuery.of(context).size.height * 0.15, width: 120);
-    } else if (products![i].mainImage != null) {
-      return Image.network(products![i].mainImage!,
-          height: MediaQuery.of(context).size.height * 0.2, width: 120);
-    } else {
-      return Text("NO IMAGE FOUND");
-    }
-  }
-
-  getDiscount(int i) {
-    if (products![i].generalDiscountPercent != null) {
-      return Container(
-        padding: EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          color: Color(0xFF4C53A5),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Text(
-          "- ${products![i].generalDiscountPercent}",
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 14, color: Colors.white),
-        ),
-      );
-    }
-    return Container();
   }
 
   @override
@@ -75,9 +48,8 @@ class _ItemsWidgetState extends State<ItemsWidget> {
               for (int i = 0; i < products!.length; i++)
                 SingleChildScrollView(
                   child: Container(
-                    
                     padding: EdgeInsets.only(left: 8, top: 10),
-                    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                     // height: MediaQuery.of(context).size.height * 0.5,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -88,7 +60,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            getDiscount(i),
+                            ApiUtils.getDiscount(products![i], context),
                             Padding(
                               padding: const EdgeInsets.only(right: 8, top: 3),
                               child: Icon(
@@ -101,17 +73,17 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
+                              context,
+                              MaterialPageRoute(
                                   builder: (context) => ItemPage(),
-                                  settings: RouteSettings(arguments: products![i] )
-                                  
-                                ),
-                                );
+                                  settings:
+                                      RouteSettings(arguments: products![i])),
+                            );
                           },
                           child: Container(
                             margin: EdgeInsets.all(10),
-                            child: getImageUrl(i),
+                            // child: getImageUrl(i),
+                            child: ApiUtils.getImageUrl(products![i], context),
                           ),
                         ),
                         Container(
@@ -140,19 +112,35 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'RS ${products![i].price}',
+                                AppUtils.getPrice(products![i].mrp),
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    decoration: TextDecoration.lineThrough,
+                                    // fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 109, 111, 128)),
+                              ),
+                              Text(
+                                AppUtils.getPrice(products![i].price),
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     color: Color(0xFF4C53A5)),
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 15),
-                                child: Icon(
-                                  Icons.shopping_cart_checkout,
-                                  color: Color(0xFF4C53A5),
-                                  
+                              InkWell(
+                                onTap: () {
+                                  print("pressed on inkwell");
+                                  if (products![i] != null) {
+                                    CartItemData.addToCart(products![i]);
+                                  }
+                                  print(
+                                      "total count is ${CartItemData.cartItemCount[products![i].id]}");
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: Icon(
+                                    Icons.shopping_cart_checkout,
+                                    color: Color(0xFF4C53A5),
+                                  ),
                                 ),
                               )
                             ],

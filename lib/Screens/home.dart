@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:ecommerce/Screens/Categories.dart';
 import 'package:ecommerce/Screens/ItemPage.dart';

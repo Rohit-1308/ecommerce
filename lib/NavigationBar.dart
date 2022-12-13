@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:badges/badges.dart';
 import 'package:ecommerce/Categories/explore_page.dart';
 import 'package:ecommerce/Product/AddNewProduct.dart';
 import 'package:ecommerce/Screens/Cart.dart';
@@ -8,6 +11,8 @@ import 'package:ecommerce/Screens/orderScreen.dart';
 import 'package:ecommerce/TrackOrder/ordertrack.dart';
 import 'package:ecommerce/UserProfile/profile.dart';
 import 'package:flutter/material.dart';
+
+import 'Static/tempCart.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -34,8 +39,9 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
+    Widget iconbox;
     return Scaffold(
-        backgroundColor: Colors.grey[100],
+        // backgroundColor: Colors.grey[100],
         drawer: const NavigationDrawer(),
         body: _children[_currentindex],
         bottomNavigationBar: BottomNavigationBar(
@@ -53,7 +59,19 @@ class _DashBoardState extends State<DashBoard> {
                 backgroundColor: Color(0xFF4C53A5),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart),
+  
+                icon: Badge(
+                  alignment: Alignment.topRight,
+                  badgeColor: Colors.red,
+                  // padding: const EdgeInsets.all(7),
+                  badgeContent:  Text(
+                    "${CartItemData.cartItem.length}",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  child: const Icon(
+                    Icons.shopping_cart,
+                  ),
+                ),
                 label: 'Cart',
                 backgroundColor: Color(0xFF4C53A5),
               ),
@@ -98,7 +116,7 @@ class NavigationDrawer extends StatelessWidget {
           top: MediaQuery.of(context).padding.top,
         ),
         child: Column(
-          children: [
+          children: const [
             SizedBox(
               height: 12,
             ),

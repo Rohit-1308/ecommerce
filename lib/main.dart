@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const Splash(),
+      home: Splash(),
     );
   }
 }
@@ -29,7 +29,6 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
@@ -50,7 +49,7 @@ class _SplashState extends State<Splash> {
               Container(
                   height: 80,
                   width: 80,
-                  child: Image(image: AssetImage('images/cart.png'))),
+                  child: const Image(image: AssetImage('images/cart.png'))),
             ],
           ),
         ),
@@ -75,14 +74,14 @@ class _HomeState extends State<Home> {
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: ListView(
           children: [
-            Image(
+            const Image(
               image: AssetImage('images/signin.png'),
               height: 250,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               'Login',
               style: TextStyle(
                   color: Color(0xFF4C53A5),
@@ -90,11 +89,11 @@ class _HomeState extends State<Home> {
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40),
               child: TextField(
                 // controller: email,
                 decoration: InputDecoration(
@@ -105,13 +104,13 @@ class _HomeState extends State<Home> {
                         borderSide: BorderSide(color: Colors.black38))),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Stack(children: [
-                TextField(
+                const TextField(
                   //  controller: password,
                   decoration: InputDecoration(
                       hintText: 'password',
@@ -128,7 +127,7 @@ class _HomeState extends State<Home> {
                       onTap: () {
                         // Navigator.push(context, MaterialPageRoute(builder: (context)=>ResetPass(),));
                       },
-                      child: Text(
+                      child: const Text(
                         'Forgot?',
                         style: TextStyle(
                           color: Color(0xFF4C53A5),
@@ -139,43 +138,43 @@ class _HomeState extends State<Home> {
                 )
               ]),
             ),
-            SizedBox(
+            const SizedBox(
               height: 45,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 120),
               child: MaterialButton(
-                color: Color(0xFF4C53A5),
-                padding: EdgeInsets.all(10),
+                color: const Color(0xFF4C53A5),
+                padding: const EdgeInsets.all(10),
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DashBoard(),
+                        builder: (context) => const DashBoard(),
                       ));
                   //  register();
                 },
-                child: Text(
+                child: const Text(
                   'Login',
                   style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
                 ),
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Text(
+            const Text(
               'Or Login With...',
               style: TextStyle(color: Colors.black38),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -183,10 +182,10 @@ class _HomeState extends State<Home> {
                 //  Expanded(child: //OnlineButton('images/go.jpg', (){})),Expanded(child:OnlineButton('images/in.jpg', (){})),Expanded(child:OnlineButton('images/tw.png', (){}))
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            Text.rich(
+            const Text.rich(
               TextSpan(text: "Don't have an account yet?", children: [
                 TextSpan(
                   text: " SignUp",
@@ -199,10 +198,10 @@ class _HomeState extends State<Home> {
               ]),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Center(
+            const Center(
                 child: Text(
               '',
               style: TextStyle(color: Colors.red),

@@ -1,14 +1,17 @@
-import 'package:ecommerce/Screens/home.dart';
-import 'package:flutter/material.dart';
+// ignore_for_file: prefer_const_constructors
 
-class CartAppBar extends StatefulWidget {
-  const CartAppBar({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+
+class OrderDetailsAppBar extends StatefulWidget {
+  const OrderDetailsAppBar({super.key});
 
   @override
-  State<CartAppBar> createState() => _CartAppBarState();
+  State<OrderDetailsAppBar> createState() => _OrderDetailsAppBarState();
 }
 
-class _CartAppBarState extends State<CartAppBar> {
+class _OrderDetailsAppBarState extends State<OrderDetailsAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,9 +22,6 @@ class _CartAppBarState extends State<CartAppBar> {
           InkWell(
             onTap: () {
               Navigator.pop(context);
-              // Navigator.popAndPushNamed(
-              //   context,"/home"
-              // );
             },
             child: Icon(
               Icons.arrow_back,
@@ -32,7 +32,7 @@ class _CartAppBarState extends State<CartAppBar> {
           Padding(
             padding: EdgeInsets.only(left: 20),
             child: Text(
-              "Cart",
+              "Order Details",
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -40,12 +40,7 @@ class _CartAppBarState extends State<CartAppBar> {
               ),
             ),
           ),
-          Spacer(),
-          Icon(
-            Icons.more_vert,
-            size: 30,
-            color: Color(0xFF4C53A5),
-          ),
+         
         ],
       ),
     );

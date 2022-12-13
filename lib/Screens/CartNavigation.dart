@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class CartNavigation extends StatefulWidget {
@@ -16,25 +18,25 @@ class _CartNavigationState extends State<CartNavigation> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Total:",
-                style: TextStyle(
-                    color: Color(0xFF4C53A5),
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "Rs. 600",
-                style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red),
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //     Text(
+          //       "Total:",
+          //       style: TextStyle(
+          //           color: Color(0xFF4C53A5),
+          //           fontSize: 22,
+          //           fontWeight: FontWeight.bold),
+          //     ),
+          //     Text(
+          //       "Rs. 600",
+          //       style: TextStyle(
+          //           fontSize: 25,
+          //           fontWeight: FontWeight.bold,
+          //           color: Colors.red),
+          //     ),
+          //   ],
+          // ),
           Container(
             width: double.infinity,
             alignment: Alignment.center,
