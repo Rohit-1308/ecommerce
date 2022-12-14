@@ -2,11 +2,11 @@ import 'package:ecommerce/datamodel/info_product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
- class ApiUtils{
-
-  static Widget getImageUrl(InfoProduct product,context) {
+class ApiUtils {
+  static Widget getImageUrl(InfoProduct product, context) {
+    print("object getimageurl");
     if (product.variantImage != null) {
+    print("object getimageurl");
       return Image.network(product.variantImage!,
           height: MediaQuery.of(context).size.height * 0.15, width: 120);
     } else if (product.mainImage != null) {
@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
     }
   }
 
-  static Widget getDiscount(InfoProduct product,context) {
+  static Widget getDiscount(InfoProduct product, context) {
     if (product.generalDiscountPercent != null) {
       return Container(
         padding: EdgeInsets.all(5),
@@ -31,9 +31,8 @@ import 'package:flutter/material.dart';
               fontWeight: FontWeight.bold, fontSize: 14, color: Colors.white),
         ),
       );
-    }else{
-    return Container();
-
+    } else {
+      return Container();
     }
   }
-  }
+}

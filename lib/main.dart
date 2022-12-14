@@ -1,7 +1,9 @@
+import 'package:ecommerce/Controller/CartController.dart';
 import 'package:ecommerce/NavigationBar.dart';
 import 'package:ecommerce/Screens/Product%20From.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/Screens/home.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());

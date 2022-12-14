@@ -11,7 +11,9 @@ import 'package:ecommerce/Screens/orderScreen.dart';
 import 'package:ecommerce/TrackOrder/ordertrack.dart';
 import 'package:ecommerce/UserProfile/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import 'Controller/CartController.dart';
 import 'Static/tempCart.dart';
 
 class DashBoard extends StatefulWidget {
@@ -39,10 +41,11 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
+    final CartController cartController = Get.put(CartController());
     Widget iconbox;
     return Scaffold(
         // backgroundColor: Colors.grey[100],
-        drawer: const NavigationDrawer(),
+        drawer: NavigationDrawer(),
         body: _children[_currentindex],
         bottomNavigationBar: BottomNavigationBar(
             onTap: onTappedBar,
@@ -59,19 +62,20 @@ class _DashBoardState extends State<DashBoard> {
                 backgroundColor: Color(0xFF4C53A5),
               ),
               BottomNavigationBarItem(
-  
-                icon: Badge(
-                  alignment: Alignment.topRight,
-                  badgeColor: Colors.red,
-                  // padding: const EdgeInsets.all(7),
-                  badgeContent:  Text(
-                    "${CartItemData.cartItem.length}",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  child: const Icon(
-                    Icons.shopping_cart,
-                  ),
-                ),
+                icon: Obx(() {
+                  return Badge(
+                    alignment: Alignment.topRight,
+                    badgeColor: Colors.red,
+                    // padding: const EdgeInsets.all(7),
+                    badgeContent: Text(
+                      "${cartController.CartItemCount}",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    child: const Icon(
+                      Icons.shopping_cart,
+                    ),
+                  );
+                }),
                 label: 'Cart',
                 backgroundColor: Color(0xFF4C53A5),
               ),

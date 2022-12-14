@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import '../datamodel/info_product.dart';
 
 class RemoteService {
-  static Future<List<InfoProduct>?> getProductDetails() async {
+  static Future<List<InfoProduct>> getProductDetails() async {
     var client = http.Client();
     List<InfoProduct> products = [];
     var url = Uri.parse("${StaticData.URL}/get_products");
@@ -26,7 +26,7 @@ class RemoteService {
     if (response.statusCode == 200) {
       return products;
     } else {
-      return null;
+      return [];
     }
   }
 }
