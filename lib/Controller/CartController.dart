@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:ecommerce/datamodel/info_product.dart';
 import 'package:get/get.dart';
 
@@ -15,10 +17,6 @@ class CartController extends GetxController {
 
   addToCart(InfoProduct product) {
     String id = product.id!;
-    if (IdToProductCount.isEmpty) {
-      IdToProductCount[id] = 1;
-      CartProducts.add(product);
-    }
     if (IdToProductCount[id] != null) {
       if (IdToProductCount[id] > 0) {
         IdToProductCount[id]++;
@@ -71,19 +69,42 @@ class CartController extends GetxController {
       }
       orderTotalPrice = p;
     }
-    return orderTotalPrice * 0.18;
+    return ((orderTotalPrice - getOrderDiscount()) * 0.18);
   }
 
   getOrderDiscount() {
     //gives discount amount based on generalDiscountPercent
     if (CartItemCount != 0) {
       double p = 0;
+      double gDisP = 00.0;
+      double mItemDisP = 0.00;
+      double mCatDisP = 0.0;
+      double mSubCatDisP = 0.00;
+
+      int count = 0;
+      double finalDiscountPercent = 0.0;
+
       for (int i = 0; i < CartItemCount; i++) {
-        int count = IdToProductCount[CartProducts[i].id];
-        double discountPercent =
-            double.parse(CartProducts[i].generalDiscountPercent!);
-        p += (discountPercent / 100) *
-            double.parse(CartProducts[i].mrp!) *
+        count = IdToProductCount[CartProducts[i].id];
+        if (CartProducts[i].generalDiscountPercent != null) {
+          gDisP = double.parse(CartProducts[i].generalDiscountPercent!);
+        }
+        if (CartProducts[i].membershipItemDiscountPercent != null) {
+          gDisP = double.parse(CartProducts[i].membershipItemDiscountPercent);
+        }
+        if (CartProducts[i].membershipCategoryDiscountPercent != null) {
+          gDisP =
+              double.parse(CartProducts[i].membershipCategoryDiscountPercent);
+        }
+        if (CartProducts[i].membershipSubCategoryDiscountPercent != null) {
+          gDisP = double.parse(
+              CartProducts[i].membershipSubCategoryDiscountPercent);
+        }
+        finalDiscountPercent =
+            max(max(gDisP, mItemDisP), max(mCatDisP, mSubCatDisP));
+
+        p += (finalDiscountPercent / 100) *
+            double.parse(CartProducts[i].price!) *
             count;
       }
       orderTotalDiscount = p;
@@ -91,21 +112,8 @@ class CartController extends GetxController {
     return orderTotalDiscount;
   }
 
-  getOrderDiscountOnMrp() {
-    if (CartItemCount != 0) {
-      double p = 0;
-      for (int i = 0; i < CartItemCount; i++) {
-        int count = IdToProductCount[CartProducts[i].id];
-        p += double.parse(CartProducts[i].mrp!) -
-            double.parse(CartProducts[i].price!);
-        p = p * count;
-      }
-      orderTotalDiscount = p;
-    }
-    return orderTotalDiscount;
-  }
-
   getTotalAmount() {
-    return (getOrderTotalPrice() * 1.18 + 70).toStringAsFixed(2);
+    return (getOrderTotalPrice() + getOrderTax() + 70 - getOrderDiscount())
+        .toStringAsFixed(2);
   }
 }

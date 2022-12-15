@@ -77,46 +77,7 @@ class _CartPageState extends State<CartPage> {
                           (_isVisible) ? _isVisible = false : _isVisible = true;
                         });
                       },
-                      child: Row(
-                        children: [
-                          Visibility(
-                            visible: !_isVisible,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF4C53A5),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: const Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          Visibility(
-                            visible: _isVisible,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF4C53A5),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: const Icon(
-                                Icons.remove,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Text(
-                              "Add coupon code",
-                              style: TextStyle(
-                                  color: Color(0xFF4C53A5),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
-                            ),
-                          ),
-                        ],
-                      ),
+                      child: AddCouponContainer(isVisible: _isVisible),
                     ),
                   ),
                   Visibility(
@@ -135,178 +96,10 @@ class _CartPageState extends State<CartPage> {
                               hintText: 'Enter Your Coupon Code')),
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    margin: EdgeInsets.symmetric(
-                        horizontal: UiData.getScreenWidth(context) * 0.02,
-                        vertical: 5),
-                    padding: EdgeInsets.all(5),
-                    child: Column(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                            vertical: 15,
-                            horizontal: 10,
-                          ),
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "Payment Summary",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF4C53A5)),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20),
-                                child: Text(
-                                  "Order Total",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20),
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  "\u{20B9} ${cartController.getOrderTotalPrice()}",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20),
-                                child: Text(
-                                  "Tax(18%)",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20),
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  "\u{20B9} ${cartController.getOrderTax()}",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20),
-                                child: Text(
-                                  "Delivery charges",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20),
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  "\u{20B9} ${CartItemData.deliveryCharges}",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20),
-                                child: Text(
-                                  "Discount Offer",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20),
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  "\u{20B9} ${cartController.getOrderDiscountOnMrp()}",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Divider(
-                          thickness: 2.00,
-                          color: Color(0xFF4C53A5),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20),
-                                child: Text(
-                                  "Total amount",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF4C53A5)),
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20),
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  "\u{20B9} ${cartController.getTotalAmount()}",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.red),
-                                ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                  PaymentSummary(cartController: cartController),
                 ],
               ),
             ),
-            // Container(
-            //     child: Column(
-            //   children: dynamicList,
-            // )),
-
             Container(
               child: const CartNavigation(),
             ),
@@ -314,5 +107,251 @@ class _CartPageState extends State<CartPage> {
         );
       }
     });
+  }
+}
+
+class AddCouponContainer extends StatelessWidget {
+  const AddCouponContainer({
+    Key? key,
+    required bool isVisible,
+  })  : _isVisible = isVisible,
+        super(key: key);
+
+  final bool _isVisible;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Visibility(
+          visible: !_isVisible,
+          child: Container(
+            decoration: BoxDecoration(
+              color: const Color(0xFF4C53A5),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        Visibility(
+          visible: _isVisible,
+          child: Container(
+            decoration: BoxDecoration(
+              color: const Color(0xFF4C53A5),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Icon(
+              Icons.remove,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            "Add coupon code",
+            style: TextStyle(
+                color: Color(0xFF4C53A5),
+                fontWeight: FontWeight.bold,
+                fontSize: 16),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class PaymentSummary extends StatelessWidget {
+  const PaymentSummary({
+    Key? key,
+    required this.cartController,
+  }) : super(key: key);
+
+  final CartController cartController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      margin: EdgeInsets.symmetric(
+          horizontal: UiData.getScreenWidth(context) * 0.02, vertical: 5),
+      padding: EdgeInsets.all(5),
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(
+              vertical: 15,
+              horizontal: 10,
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Payment Summary",
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF4C53A5)),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "Order Total",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Spacer(),
+                Container(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "\u{20B9} ${(cartController.getOrderTotalPrice()).toStringAsFixed(2)}",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.lineThrough,
+                        // decorationColor: Colors.red,
+                        decorationStyle: TextDecorationStyle.solid,
+                        decorationThickness: 3),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "\u{20B9} ${(cartController.getOrderTotalPrice() - cartController.getOrderDiscount()).toStringAsFixed(2)}",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "Tax(18%)",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Spacer(),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "\u{20B9} ${(cartController.getOrderTax()).toStringAsFixed(2)}",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "Delivery charges",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Spacer(),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "\u{20B9} ${CartItemData.deliveryCharges}",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "Discount Offer",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Spacer(),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "\u{20B9} ${(cartController.getOrderDiscount()).toStringAsFixed(2)}",
+                    // "",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            thickness: 2.00,
+            color: Color(0xFF4C53A5),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "Total amount",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF4C53A5)),
+                  ),
+                ),
+                Spacer(),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "\u{20B9} ${cartController.getTotalAmount()}",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

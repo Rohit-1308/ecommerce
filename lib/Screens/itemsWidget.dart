@@ -4,6 +4,7 @@ import 'package:ecommerce/Controller/CartController.dart';
 import 'package:ecommerce/Controller/ItemController.dart';
 import 'package:ecommerce/Screens/ItemPage.dart';
 import 'package:ecommerce/API/RemoteService.dart';
+import 'package:ecommerce/Static/UiData.dart';
 import 'package:ecommerce/datamodel/info_product.dart';
 import 'package:ecommerce/utils/apiUtils.dart';
 import 'package:ecommerce/utils/appUtils.dart';
@@ -22,35 +23,32 @@ class ItemsWidget extends StatefulWidget {
 class _ItemsWidgetState extends State<ItemsWidget> {
   List<InfoProduct>? products;
   final ItemController itemController = Get.put(ItemController());
-  final CartController cartController=Get.put(CartController());
+  final CartController cartController = Get.put(CartController());
 
   get itemBuilder => null;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    // getProductInfoList();
     itemController.getProductInfoList();
   }
 
-  // getProductInfoList() async {
-  //   products = await RemoteService.getProductDetails();
-  //   if (products != null) {
-  //     print(products![0].size);
-  //   }
-  //   setState(() {});
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // return (products == null)
     return Obx(() {
       print("count  ${itemController.productCount}");
       // if (itemController.productCount > 0) {
       //   itemController.update();
       // }
       return (itemController.productCount == 0)
-          ? Text("No product found")
+          ?
+          //  Text("No product found")
+          Container(
+              height: UiData.getScreenHeight(context) * 0.5,
+              alignment: Alignment.center,
+              color: Colors.white,
+              child: Container(child: CircularProgressIndicator()),
+            )
           : GridView.count(
               childAspectRatio: 0.55,
               physics: NeverScrollableScrollPhysics(),
@@ -126,19 +124,24 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  AppUtils.getPrice(
-                                      itemController.products[i].mrp),
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      decoration: TextDecoration.lineThrough,
-                                      // fontWeight: FontWeight.bold,
-                                      color:
-                                          Color.fromARGB(255, 109, 111, 128)),
+                                Visibility(
+                                  visible: itemController.isDiscountAvailble(i),
+                                  child: Text(
+                                    AppUtils.getPrice(
+                                        itemController.products[i].price),
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        decoration: TextDecoration.lineThrough,
+                                        decorationThickness: 2,
+                                        color:
+                                            Color.fromARGB(255, 109, 111, 128)),
+                                  ),
                                 ),
                                 Text(
-                                  AppUtils.getPrice(
-                                      itemController.products[i].price),
+                                  AppUtils.getPrice(itemController
+                                      .getPriceWithDiscount(
+                                          itemController.products[i])
+                                      .toString()),
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
@@ -146,9 +149,8 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    print("pressed on inkwell");
-                                    cartController.addToCart(itemController.products[i]);
-                                    
+                                    cartController
+                                        .addToCart(itemController.products[i]);
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(right: 10),

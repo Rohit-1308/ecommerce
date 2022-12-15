@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 
 class ApiUtils {
   static Widget getImageUrl(InfoProduct product, context) {
-    print("object getimageurl");
     if (product.variantImage != null) {
-    print("object getimageurl");
       return Image.network(product.variantImage!,
           height: MediaQuery.of(context).size.height * 0.15, width: 120);
     } else if (product.mainImage != null) {

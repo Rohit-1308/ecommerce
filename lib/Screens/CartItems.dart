@@ -7,10 +7,11 @@ import 'package:ecommerce/Static/tempCart.dart';
 import 'package:ecommerce/utils/appUtils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:ecommerce/Controller/CartController.dart';
 
 import 'package:get/get.dart';
+
+import '../Controller/ItemController.dart';
 
 class CartItemSamples extends StatefulWidget {
   const CartItemSamples({Key? key}) : super(key: key);
@@ -23,6 +24,7 @@ class _CartItemSamplesState extends State<CartItemSamples> {
   @override
   Widget build(BuildContext context) {
     final CartController cartController = Get.put(CartController());
+    final ItemController itemController = Get.put(ItemController());
 
     var totalWidth = MediaQuery.of(context).size.width;
     var items = cartController.CartProducts;
@@ -71,7 +73,7 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                         ),
                         Row(children: [
                           Text(
-                            AppUtils.getPrice(items[i].mrp),
+                            AppUtils.getPrice(items[i].price),
                             style: TextStyle(
                                 fontSize: 16,
                                 decoration: TextDecoration.lineThrough,
@@ -79,7 +81,9 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                                 color: Color.fromARGB(255, 109, 111, 128)),
                           ),
                           Text(
-                            AppUtils.getPrice(items[i].price),
+                            AppUtils.getPrice(itemController
+                                .getPriceWithDiscount(items[i])
+                                .toString()),
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,

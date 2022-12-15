@@ -4,8 +4,10 @@ import 'package:ecommerce/Screens/Product%20From.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/Screens/home.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 
 void main() {
+  // await Hive.init();
   runApp(const MyApp());
 }
 

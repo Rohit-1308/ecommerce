@@ -17,12 +17,12 @@ class RemoteService {
     });
 
     print(response.statusCode);
-
     final productData = jsonDecode(response.body);
 
     products = List.from(productData)
         .map((item) => InfoProduct.fromMap(item))
         .toList();
+
     if (response.statusCode == 200) {
       return products;
     } else {
